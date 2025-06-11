@@ -1,0 +1,9 @@
+import styled from "styled-components";
+
+export const StyledImg = styled.img`
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+`

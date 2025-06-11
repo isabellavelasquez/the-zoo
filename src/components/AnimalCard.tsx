@@ -1,27 +1,39 @@
-import styled from "styled-components"
-import type { IAnimal } from "../models/IAnimalResponse"
+import { type IAnimal } from "../models/IAnimal"
 import { Link } from "react-router-dom"
-
-const StyledImg = styled.img`
-    width: 100%;
-     max-height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 0.5rem;
-`
+import { StyledImg } from "./styled/Images"
+import { timePassed } from "../helpers/animalsHelper"
 
 type AnimalCardProps = {
     animal: IAnimal
 }
 
-export const AnimalCard = ({ animal }: AnimalCardProps) => {
+export enum AnimalStatus {
+    FULL = "är mätt",
+    ALMOST_HUNGRY = "behöver matas snart", 
+    HUNGRY = "behöver bli matad nu", 
+    STARVING = "dör snart av hunger"
+}
+
+export const AnimalCard = ({ animal }: AnimalCardProps) => { 
+
+
     
+    const getAnimalStatus = () => {
+       const lastFed = timePassed(animal)
+
+       if(lastFed > 3) return AnimalStatus.FULL
+       if(lastFed >= 3) return AnimalStatus.ALMOST_HUNGRY
+       if(lastFed >= 5) return AnimalStatus.HUNGRY
+       if(lastFed > 5) return AnimalStatus.STARVING
+    }
 
     return<>
+    <div>
         <StyledImg src={animal.imageUrl}></StyledImg>
         <h2>{animal.name}</h2>
         <p>{animal.shortDescription}</p>
         <Link to={`/animal/${animal.id}`}>Läs mer</Link>
-        //need to add status here//
+        <p>{animal.name + " " + getAnimalStatus()}</p>
+    </div>
     </>
 }

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AnimalsContext } from "../contexts/AnimalsContext";
 import { useParams } from "react-router";
-import { AnimalCard } from "../components/AnimalCard";
+import { AnimalPresentation } from "../components/AnimalPresentation";
 
 export const Animal = () => {
 
@@ -12,7 +12,7 @@ export const Animal = () => {
         const foundAnimal = animals.find((a) => a.id === +id)
 
         if(foundAnimal) {
-            return<AnimalCard animal={foundAnimal}></AnimalCard>
+            return<AnimalPresentation animal={foundAnimal}></AnimalPresentation>
         }
 
         return <>No animal found</>

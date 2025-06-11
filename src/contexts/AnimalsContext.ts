@@ -1,5 +1,5 @@
 import { createContext, type Dispatch } from "react"
-import type { IAnimal } from "../models/IAnimalResponse"
+import type { IAnimal } from "../models/IAnimal"
 import type { Action } from "../reducers/animalReducer"
 
 type AnimalContext = {
