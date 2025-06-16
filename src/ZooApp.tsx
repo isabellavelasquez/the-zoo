@@ -6,10 +6,9 @@ import { RouterProvider } from "react-router";
 import { router } from "./Routing";
 
 export const ZooApp = () => {
+  const [animals, dispatch] = useReducer(AnimalReducer, []);
 
-    const [animals, dispatch] = useReducer(AnimalReducer, []);
-
-    useEffect(() => {
+  useEffect(() => {
     if (animals.length > 0) return;
 
     const getData = async () => {
@@ -22,9 +21,11 @@ export const ZooApp = () => {
     };
     getData();
   });
-  return <>
+  return (
+    <>
       <AnimalsContext value={{ animals, dispatch }}>
-        <RouterProvider router={router}/>
+        <RouterProvider router={router} />
       </AnimalsContext>
-  </>;
-}
+    </>
+  );
+};

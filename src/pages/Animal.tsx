@@ -4,19 +4,18 @@ import { useParams } from "react-router";
 import { AnimalPresentation } from "../components/AnimalPresentation";
 
 export const Animal = () => {
+  const { animals } = useContext(AnimalsContext);
+  const { id } = useParams();
 
-    const { animals } = useContext(AnimalsContext)
-    const { id } = useParams();
+  if (id) {
+    const foundAnimal = animals.find((a) => a.id === +id);
 
-    if(id) {
-        const foundAnimal = animals.find((a) => a.id === +id)
-
-        if(foundAnimal) {
-            return<AnimalPresentation animal={foundAnimal}></AnimalPresentation>
-        }
-
-        return <>No animal found</>
+    if (foundAnimal) {
+      return <AnimalPresentation animal={foundAnimal}></AnimalPresentation>;
     }
-    
-    return<>No id found</>
-}
+
+    return <>No animal found</>;
+  }
+
+  return <>No id found</>;
+};

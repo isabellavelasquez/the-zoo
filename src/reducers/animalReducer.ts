@@ -20,7 +20,7 @@ export const AnimalReducer = (animals: IAnimal[], action: Action): IAnimal[] => 
             return animals.map(a => 
             ({
                 ...a,
-                isFed: timePassed(a) >= 4
+                isFed: timePassed(a) <= 4
             }))
         }
 
@@ -28,7 +28,8 @@ export const AnimalReducer = (animals: IAnimal[], action: Action): IAnimal[] => 
             return animals.map((a) => 
                 a.id === +action.payload ? {...a, lastFed: new Date().toISOString(), isFed: true}: a )
         }
+
+        default: return animals;
     }
    
-    return animals;
 }
