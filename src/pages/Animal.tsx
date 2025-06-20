@@ -7,6 +7,8 @@ export const Animal = () => {
   const { animals } = useContext(AnimalsContext);
   const { id } = useParams();
 
+  console.log(animals);
+
   if (id) {
     const foundAnimal = animals.find((a) => a.id === +id);
 

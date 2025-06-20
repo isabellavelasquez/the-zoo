@@ -1,4 +1,4 @@
-import { timePassed } from "../helpers/animalsHelper";
+import { timePassedSinceFed } from "../helpers/animalsHelper";
 import { type IAnimal } from "../models/IAnimal";
 
 export enum ActionTypes {
@@ -20,7 +20,7 @@ export const AnimalReducer = (animals: IAnimal[], action: Action): IAnimal[] => 
             return animals.map(a => 
             ({
                 ...a,
-                isFed: timePassed(a) <= 4
+                isFed: timePassedSinceFed(a) <= 4
             }))
         }
 
