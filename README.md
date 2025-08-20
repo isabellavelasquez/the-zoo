@@ -1,19 +1,16 @@
-# React + TypeScript + Vite
+# Zoo app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
+A React + TypeScript app for managing a virtual zoo, tracking animals and whether they have been fed.
 
 
 ## Features
 
-Admin login with email/password
+View Animals: Browse all animals or see details for each.
 
-JWT-based authentication and cookie sessions
+Track Feeding: Mark animals as fed using a button that dispatches a FED action.
 
-Adding and displaying quiz questions
+Fed Status Indicator: Displays whether each animal is fed based on isFed.
 
-Password hashing with bcrypt
+API Integration: Fetches animals from a remote API.
 
-Backend using Express + Mongoose
-
-Frontend in TypeScript
+Global State Management: Uses React Context + Reducer for managing animal state.
